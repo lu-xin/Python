@@ -13,6 +13,9 @@ while True:
                 for line in lines:
                     if myBlock == line.strip():
                         x, y, z = mc.player.getTilePos()
+                        #Because parameters like block.STONE are used in setblock() and
+                        #variables cannot be used, the function exec_code() is used 
+                        #to run the string directly
                         a = str('mc.setBlock(%s,%s,%s,block.%s' % (x,y,z,myBlock)+')')
                         def exec_code(a):
                             exec(a)
